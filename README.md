@@ -26,5 +26,3 @@ Sovelluksessa näkyy kokoelma vuoristoratoja, joista voi etsiä tietoa ja lukea 
 * Käyttäjälle tarjotaan erinäistä tilastotietoa.
 
 * Käyttäjä voi katsoa vuoristoratojen top-listan arvostelujen perusteella.
-
-testing
