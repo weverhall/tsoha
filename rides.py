@@ -1,5 +1,6 @@
 from db import db
 
+
 def fetch_rides():
     sql = "SELECT id, name FROM rides ORDER BY name"
     return db.session.execute(sql).fetchall()

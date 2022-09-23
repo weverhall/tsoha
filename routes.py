@@ -31,23 +31,21 @@ def register():
 
     if request.method == "POST":
         username = request.form["username"]
-        if len(username) < 3 or len(username) > 20:
-            return render_template("error.html", message="Username length must be between 3 and 20 characters")
+        if len(username) < 3 or len(username) > 30:
+            return render_template("error.html", message="Username length must be between 3 and 30 characters")
 
         password1 = request.form["password1"]
         password2 = request.form["password2"]
-        if len(password1) < 3:
-            return render_template("error.html", message="Password length must be over 3 characters")
+        if len(password1) < 3 or len(password1) > 30:
+            return render_template("error.html", message="Password length must be between 3 and 30 characters")
         if password1 != password2:
             return render_template("error.html", message="Passwords don't match")
-        if password1 == "":
-            return render_template("error.html", message="Password field empty")
         
         role = request.form["role"]
         if role not in ("1", "2"):
             return render_template("error.html", message="Unknown role")
         if not users.register(username, password1, role):
-            return render_template("error.html", message="Registering new user failed")
+            return render_template("error.html", message="Registering new account failed")
         return redirect("/")
 
 @app.route("/all", methods=["GET", "POST"])
@@ -68,8 +66,8 @@ def new_ride():
 
     if request.method == "POST":
         name = request.form["name"]
-        if len(name) < 2 or len(name) > 30:
-            return render_template("error.html", message="Name length must be between 2 and 30 characters")
+        if len(name) < 1 or len(name) > 30:
+            return render_template("error.html", message="Name length must be between 1 and 30 characters")
 
         description = request.form["description"]
         if len(description) > 1000:
