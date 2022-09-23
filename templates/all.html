@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<ul>
+    {% for ride in rides %}
+    <li><a href="/rides/{{ rides.id }}">{{ rides.name }}</a>
+    {% endfor %}
+</ul>
+
+{% endblock %}

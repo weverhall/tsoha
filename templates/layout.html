@@ -1,0 +1,21 @@
+<title>tsoha-vuoristoradat {% block title %}{% endblock %}</title>
+<h1>Real Rad Rollercoasters</h1>
+
+<a href="/">Home</a> |
+{% if session.user_id %}
+<a href="/logout">Sign out (<i>{{ session.user_name }}</i>)</a> |
+{% else %}
+<a href="/login">Sign in</a> |
+{% endif %}
+<a href="/register">Register</a>
+
+{% if session.user_role == 2 %}
+<br><p>
+<b>Admin functions</b>
+<br> 
+<a href="/new">Add new ride</a>
+{% endif %}
+
+<hr>
+{% block content %}{% endblock %}
+<hr>

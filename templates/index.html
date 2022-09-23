@@ -1,3 +1,10 @@
-Tervetuloa!
-<p>
-Olet sivuston {{ counter }}. käyttäjä
+{% extends "layout.html" %}
+{% block content %}
+
+<nav>
+    <ul>
+        <li><a href="/all">Show all rides</a></li>
+    </ul>
+</nav>
+
+{% endblock %}

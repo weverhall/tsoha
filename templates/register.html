@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<form action="/register" method="post">
+Username: <br><input type="text" name="username">
+<p>
+Password: <br><input type="password" name="password1">
+<p>
+Verify password: <br><input type="password" name="password2">
+<p>
+<input type="radio" name="role" value="1" checked="checked"> User
+<input type="radio" name="role" value="2"> Admin
+<p>
+<input type="submit" value="Register new account">
+</form>
+
+{% endblock %}
