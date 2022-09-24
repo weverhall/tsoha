@@ -2,12 +2,13 @@
 {% block content %}
 
 <form action="/new" method="post">
-    Name: <br><input type="text" name="name" minlength="2" maxlength="30">
+    Name <br><input type="text" name="name" minlength="2" maxlength="30">
     <p>
-    Description: <br><textarea name="description" rows="5" cols="40" maxlength="1000"></textarea>
+    Description <br><textarea name="description" rows="5" cols="40" maxlength="1000"></textarea>
     <p>
     <input type="submit" value="Add new ride">
     <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
+    <input type="hidden" name="ride_id" value="{{ id }}">
 </form>
 
 {% endblock %}

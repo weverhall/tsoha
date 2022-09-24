@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 
+<title>RidesApp</title>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-<title>Real Rad Rollercoasters</title>
 
 <div class="container">
-  <nav class="navbar navbar-expand-sm navbar-light">
+  <nav class="navbar navbar-expand-sm navbar-light bg-light">
     <a class="navbar-brand" href="/">Home</a>
     <ul class="navbar-nav">
     {% if session.user_id %}
@@ -20,8 +24,27 @@
       <li class="nav-item">
         <a class="nav-link" href="/register">Register</a>
       </li>
+    {% if session.user_role == 2 %}
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Admin tools</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="/new">Add new ride</a>
+        </div>
+      </li>
+    {% endif %}
     </ul>
   </nav>
+  <div class="row">
+    <div class="col-8">
+      <p>
+      <h2>Welcome to RidesApp!</h2>
+      <p>
+      <h6>Register an account and begin exploring rollercoasters from all over the world.</h6>
+      <ul>
+        <li><a href="/all">Show all rides</a></li>
+      </ul>
+    </div>
+  </div>
 </div>
 
 <hr>

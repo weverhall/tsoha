@@ -11,5 +11,7 @@ def fetch_ride_data(ride_id):
 
 def new_ride(name, description):
     sql = "INSERT INTO rides (name, description) VALUES (:name, :description)"
+    ride_id = db.session.execute(sql, {"name":name, "description":description}).fetchone()[0]
     db.session.execute(sql, {"name":name, "description":description})
     db.session.commit()
+    return ride_id
