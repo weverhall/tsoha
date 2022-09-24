@@ -1,14 +1,26 @@
 {% extends "layout.html" %}
 {% block content %}
 
-<form action="/new" method="post">
-    Name <br><input type="text" name="name" minlength="2" maxlength="30">
-    <p>
-    Description <br><textarea name="description" rows="5" cols="40" maxlength="1000"></textarea>
-    <p>
-    <input type="submit" value="Add new ride">
-    <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
-    <input type="hidden" name="ride_id" value="{{ id }}">
-</form>
+<div class="container">
+    <div class="row">
+        <div class="col-8">
+          <form action="/new" method="post">
+            <div class="form-group col-6">
+              <label for="name">Name</label>
+              <input type="text" class="form-control" name="name" minlength="1" maxlength="30">
+            </div>
+            <div class="form-group col-6">
+              <label for="description">Description</label>
+              <textarea name="description" rows="5" cols="50" maxlength="1000"></textarea>
+            </div>
+            <div class="form-group col-6">
+              <button type="submit" class="btn btn-primary">Add new ride</button>
+              <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
+              <input type="hidden" name="ride_id" value="{{ id }}">
+            </div>
+          </form>
+        </div>
+    </div>
+</div>
 
 {% endblock %}

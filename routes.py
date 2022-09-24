@@ -49,14 +49,8 @@ def register():
         return redirect("/")
 
 @app.route("/all", methods=["GET", "POST"])
-def all():
+def show_all():
     return render_template("all.html", rides=rides.fetch_rides())
-
-@app.route("/rides/<int:ride_id>")
-def show_ride(ride_id):
-    data = rides.fetch_ride_data(ride_id)
-    print(data)
-    return render_template("ride.html", id=ride_id, name=data[0], description=data[1])
 
 @app.route("/new", methods=["GET", "POST"])
 def new_ride():
@@ -65,6 +59,7 @@ def new_ride():
         return render_template("new.html")
 
     if request.method == "POST":
+        users.check_csrf()
         name = request.form["name"]
         if len(name) < 1 or len(name) > 30:
             return render_template("error.html", message="Name length must be between 1 and 30 characters")
@@ -74,4 +69,10 @@ def new_ride():
             return render_template("error.html", message="Description length must be under 1000 characters")
 
         ride_id = rides.new_ride(name, description)
-        return redirect("/rides/"+str(ride_id))
+        return redirect("/ride/"+str(ride_id))
+
+@app.route("/ride/<int:ride_id>")
+def show_ride(ride_id):
+    data = rides.fetch_ride_data(ride_id)
+
+    return render_template("ride.html", id=ride_id, name=data[0], description=data[1])
