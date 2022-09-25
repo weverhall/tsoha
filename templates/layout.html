@@ -12,35 +12,37 @@
   <nav class="navbar navbar-expand-sm navbar-light">
     <a class="navbar-brand" href="/">Home</a>
     <ul class="navbar-nav">
-    {% if session.user_id %}
+      {% if session.user_id %}
       <li class="nav-item">
         <a class="nav-link" href="/logout">Sign out (<i>{{ session.user_name }}</i>)</a>
       </li>
-    {% else %}
+      {% else %}
       <li class="nav-item">
         <a class="nav-link" href="/login">Sign in</a>
       </li>
-    {% endif %}
+      {% endif %}
       <li class="nav-item">
         <a class="nav-link" href="/register">Register</a>
       </li>
-    {% if session.user_role == 2 %}
+      {% if session.user_role == 2 %}
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Admin tools</a>
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+          aria-expanded="false">Admin tools</a>
         <div class="dropdown-menu">
           <a class="dropdown-item" href="/new">Add new ride</a>
         </div>
       </li>
-    {% endif %}
+      {% endif %}
     </ul>
   </nav>
   <div class="row">
     <div class="col-8">
-      <img src="/static/rollercoaster.jpg" alt="rollercoaster image"> 
+      <img src="/static/rollercoaster.jpg" alt="rollercoaster image">
       <p>
-      <h2>Welcome to RidesApp!</h2>
-      <p>
-      <h6>Register an account and begin exploring rollercoasters from all over the world.</h6>
+        <h2>Welcome to RidesApp!</h2>
+        <p>
+        <h6>Register an account and explore rollercoasters from around the world.
+        </h6>
     </div>
   </div>
 </div>

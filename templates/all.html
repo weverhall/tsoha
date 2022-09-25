@@ -2,18 +2,15 @@
 {% block content %}
 
 <div class="container">
-    <div class="row">
-      <div class="col-6">
-        <ul>
+  <div class="row">
+    <div class="col-6">
+      <ul>
         {% for ride in rides %}
         <li><a href="/ride/{{ ride.id }}">{{ ride.name }}</a>
         {% endfor %}
-        </ul>
-        <br>
-        <p>
-        </div>
-      </div>
+      </ul>
     </div>
   </div>
+</div>
 
 {% endblock %}
