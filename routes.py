@@ -8,7 +8,6 @@ import users
 def index():
     return render_template("index.html")
 
-
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "GET":
@@ -21,12 +20,10 @@ def login():
         else:
             return render_template("error.html", message="Wrong username or password")
 
-
 @app.route("/logout")
 def logout():
     users.logout()
     return redirect("/")
-
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
@@ -55,11 +52,9 @@ def register():
                 message="Registering new account failed")
         return redirect("/")
 
-
 @app.route("/all", methods=["GET", "POST"])
 def show_all():
     return render_template("all.html", rides=rides.fetch_rides())
-
 
 @app.route("/new", methods=["GET", "POST"])
 def new_ride():
@@ -81,7 +76,6 @@ def new_ride():
 
         ride_id = rides.new_ride(name, description)
         return redirect("/ride/" + str(ride_id))
-
 
 @app.route("/ride/<int:ride_id>")
 def show_ride(ride_id):
