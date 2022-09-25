@@ -1,6 +1,11 @@
 # Vuoristoratasovellus
 
-Sovelluksessa näkyy kokoelma vuoristoratoja, joista voi etsiä tietoa ja lukea arvioita. Käyttäjiä on kahdenlaisia: peruskäyttäjä sekä laajemmilla oikeuksilla varustettu ylläpitäjä.
+https://tsoha-vuoristoradat.herokuapp.com/
+
+**25.9.2022:** Rekisteröityä voi joko käyttäjäksi tai ylläpitäjäksi. Ylläpitäjä voi kirjautuneena lisätä uuden tietueen yläpalkin kohdasta "Admin tools". Ulkoasu, virheviestit ja sivurakenne kokonaisuudessaan toimii suunnilleen jo halutulla tavalla. Arviot, kategoriat, tiedon poisto ym. toiminnot tulossa seuraavaan välipalautukseen.
+
+
+## Vaatimusmäärittely
 
 **Kaavailtuja perustoimintoja:**
 
@@ -12,7 +17,7 @@ Sovelluksessa näkyy kokoelma vuoristoratoja, joista voi etsiä tietoa ja lukea 
 
 * Ylläpitäjä voi määrittää vuoristoradan kategoriat.
 
-* Ylläpitäjä voi lisätä ja poistaa vuoristoratoja sekä muokata niiden kuvauksia.
+* Ylläpitäjä voi lisätä ja poistaa vuoristoratoja.
 
 * Ylläpitäjä voi poistaa arvioita.
 
