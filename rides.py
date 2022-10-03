@@ -2,8 +2,8 @@ from db import db
 
 
 def new_ride(name, description, location_id, material_id, drop_id):
-    sql = """INSERT INTO rides (name, description, location_id, material_id, drop_id, visibility) 
-             VALUES (:name, :description, :location_id, :material_id, :drop_id, 1)
+    sql = """INSERT INTO rides (name, description, location_id, material_id, drop_id) 
+             VALUES (:name, :description, :location_id, :material_id, :drop_id)
              RETURNING id"""
     ride_id = db.session.execute(sql, {"name":name, "description":description,\
             "location_id":location_id, "material_id":material_id, "drop_id":drop_id}).fetchone()[0]
@@ -22,3 +22,8 @@ def fetch_ride_data(ride_id):
 def fetch_rides():
     sql = "SELECT id, name FROM rides ORDER BY name"
     return db.session.execute(sql).fetchall()
+
+def remove_ride(ride_id):
+    sql = "DELETE FROM rides WHERE rides.id=:ride_id"
+    db.session.execute(sql, {"ride_id":ride_id})
+    db.session.commit()

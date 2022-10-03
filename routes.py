@@ -18,7 +18,7 @@ def login():
         if users.login(username, password):
             return redirect("/")
         else:
-            return render_template("login.html", message="Error: Wrong username or password.")
+            return render_template("login.html", message="Error: Invalid credentials.")
 
 @app.route("/logout")
 def logout():
@@ -54,7 +54,19 @@ def register():
 
 @app.route("/all", methods=["GET", "POST"])
 def show_all():
-    return render_template("all.html", rides=rides.fetch_rides())
+    if request.method == "GET":
+        all = rides.fetch_rides()
+        return render_template("all.html", rides=all)
+
+    if request.method == "POST":
+        users.require_role(2)
+        users.check_csrf()
+
+        if "ride" in request.form:
+            ride = request.form["ride"]
+            rides.remove_ride(ride)
+
+        return redirect("/all")
 
 @app.route("/new", methods=["GET", "POST"])
 def new_ride():

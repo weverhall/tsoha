@@ -26,6 +26,5 @@ CREATE TABLE rides (
     description TEXT,
     location_id INTEGER REFERENCES location_categories,
     material_id INTEGER REFERENCES material_categories,
-    drop_id INTEGER REFERENCES drop_categories,
-    visibility INTEGER
+    drop_id INTEGER REFERENCES drop_categories
 );

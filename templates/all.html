@@ -3,12 +3,21 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-6">
-      <ul>
+    <div class="col-8">
+      <form action="/all" method="post">
         {% for ride in rides %}
-        <li><a href="/ride/{{ ride.id }}">{{ ride.name }}</a>
+        <br>
+        <a href="/ride/{{ ride.id }}"> <font size="+1">{{ ride.name }}</font></a>
+        {% if session.user_role == 2 %}
+        <input type="radio" name="ride" value="{{ ride.id }}">
+        {% endif %}
         {% endfor %}
-      </ul>
+        {% if session.user_role == 2 %}
+        <p><br>
+        <input type="submit" value="Remove">
+        <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
+        {% endif %}
+      </form>
     </div>
   </div>
 </div>
