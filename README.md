@@ -15,8 +15,6 @@ https://tsoha-vuoristoradat.herokuapp.com/
 
 * Käyttäjä voi etsiä vuoristoratoja kategorioittain (sijainti, tyyppi, huippunopeus ym.).
 
-* Ylläpitäjä voi määrittää vuoristoradan kategoriat.
-
 * Ylläpitäjä voi lisätä ja poistaa vuoristoratoja.
 
 * Ylläpitäjä voi poistaa arvioita.

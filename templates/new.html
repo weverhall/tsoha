@@ -13,10 +13,77 @@
           <label for="description">Description</label>
           <textarea name="description" rows="5" cols="50" maxlength="1000"></textarea>
         </div>
+
         <div class="form-group col-6">
-          <button type="submit" class="btn btn-primary">Add new ride</button>
+          <div class="form-check-inline">
+            <input class="form-check-input" type="radio" name="location_id" value="1" checked="checked">
+            <label class="form-check-label" for="europe">Europe</label>
+          </div>
+          <div class="form-check-inline">
+            <input class="form-check-input" type="radio" name="location_id" value="2">
+            <label class="form-check-label" for="asia">Asia</label>
+          </div>
+          <div class="form-check-inline">
+            <input class="form-check-input" type="radio" name="location_id" value="3">
+            <label class="form-check-label" for="oceania">Oceania</label>
+          </div>
+          <div class="form-check-inline">
+            <input class="form-check-input" type="radio" name="location_id" value="4">
+            <label class="form-check-label" for="africa">Africa</label>
+          </div>
+          <div class="form-check-inline">
+            <input class="form-check-input" type="radio" name="location_id" value="5">
+            <label class="form-check-label" for="namerica">North America</label>
+          </div>
+          <div class="form-check-inline">
+            <input class="form-check-input" type="radio" name="location_id" value="6">
+            <label class="form-check-label" for="samerica">South America</label>
+          </div>
+        </div>
+        <div class="form-group col-6">
+          <div class="form-check-inline">
+            <input class="form-check-input" type="radio" name="material_id" value="1" checked="checked">
+            <label class="form-check-label" for="steel">Steel</label>
+          </div>
+          <div class="form-check-inline">
+            <input class="form-check-input" type="radio" name="material_id" value="2">
+            <label class="form-check-label" for="wooden">Wooden</label>
+          </div>
+          <div class="form-check-inline">
+            <input class="form-check-input" type="radio" name="material_id" value="3">
+            <label class="form-check-label" for="hybrid">Hybrid</label>
+          </div>
+        </div>
+        <div class="form-group col-6">
+          <div class="form-check-inline">
+            <input class="form-check-input" type="radio" name="drop_id" value="1" checked="checked">
+            <label class="form-check-label" for="strata">Strata</label>
+          </div>
+          <div class="form-check-inline">
+            <input class="form-check-input" type="radio" name="drop_id" value="2">
+            <label class="form-check-label" for="giga">Giga</label>
+          </div>
+          <div class="form-check-inline">
+            <input class="form-check-input" type="radio" name="drop_id" value="3">
+            <label class="form-check-label" for="hyper">Hyper</label>
+          </div>
+          <div class="form-check-inline">
+            <input class="form-check-input" type="radio" name="drop_id" value="4">
+            <label class="form-check-label" for="mega">Mega</label>
+          </div>
+          <div class="form-check-inline">
+            <input class="form-check-input" type="radio" name="drop_id" value="5">
+            <label class="form-check-label" for="intermediate">Intermediate</label>
+          </div>
+          <div class="form-check-inline">
+            <input class="form-check-input" type="radio" name="drop_id" value="6">
+            <label class="form-check-label" for="family">Family</label>
+          </div>
+        </div>
+        <div class="form-group col-6">
+          <button type="submit" class="btn btn-primary">Add</button>
           <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
-          <input type="hidden" name="ride_id" value="{{ id }}">
+          <input type="hidden" name="ride_id" value="{{ id }}">     
         </div>
       </form>
     </div>
