@@ -12,6 +12,7 @@ def index():
 def login():
     if request.method == "GET":
         return render_template("login.html")
+
     if request.method == "POST":
         username = request.form["username"]
         password = request.form["password"]
@@ -100,3 +101,10 @@ def show_ride(ride_id):
 
     return render_template("ride.html", id=ride_id, name=data[0], description=data[1],\
                             location=data[2], material=data[3], drop=data[4])
+
+@app.route("/result", methods=["GET"])
+def result():
+    query = request.args["query"]
+    results = rides.search(query)
+
+    return render_template("result.html", rides=results)

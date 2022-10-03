@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-8">
+      {% for ride in rides %}
+      <br>
+      <a href="/ride/{{ ride.id }}"> <font size="+1">{{ ride.name }}</font></a>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% endblock %}
