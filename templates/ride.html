@@ -3,11 +3,49 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-6">
-      <h4>{{name}}</h4>
-      {{description}}
+    <div class="col-8">
+      {% if session.user_role != 1 %} {% if session.user_role != 2 %}
+      <div class="alert alert-info alert-dismissible fade show col-6" role="alert">
+        Sign in to read and post reviews.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      </div>
+      {% endif %} {% endif %}
+      <h1>{{name}}</h1>
+      <h5>{{description}}</h5>
       <p><br>
       <i>Categories: {{location}} | {{material}} | {{drop}}</i>
+      <p><br>
+      <p><br>
+      {% if session.user_id %}
+      <h4>Reviews</h4>
+      {% for review in reviews %}
+      {{ review[0] }}'s review: "{{ review[2] }}"
+      <br>
+      Rating: {{ review[1] }}/5
+      <br>
+      <i><font size="-1">Sent at {{ review[3] }}</font></a></i>
+      <p><br>
+      {% endfor %}
+      <form action="/review" method="post">
+        <textarea name="content" rows="2" cols="40" maxlength="500"></textarea>
+        <br>
+        <select name="stars" class="form-select form-select-sm" aria-label="stars">
+          <option value="3" selected="true">Choose rating...</option>
+          <option value="1">☆</option>
+          <option value="2">☆☆</option>
+          <option value="3">☆☆☆</option>
+          <option value="4">☆☆☆☆</option>
+          <option value="5">☆☆☆☆☆</option>
+        </select>
+        <p><br>
+        <button type="submit" class="btn btn-outline-primary">Submit</button>
+        <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
+        <input type="hidden" name="ride_id" value="{{ id }}">
+      </form>
+      </div>
+      {% endif %}
     </div>
   </div>
 </div>

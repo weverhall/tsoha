@@ -50,7 +50,7 @@ def register():
             return render_template("register.html", message="Error: Unknown role.")
         if not users.register(username, password1, role):
             return render_template("register.html",
-                message="Error: Registering new account failed.")
+                message="Error: Username already exists.")
         return redirect("/")
 
 @app.route("/all", methods=["GET", "POST"])
@@ -77,12 +77,12 @@ def new_ride():
 
     if request.method == "POST":
         users.check_csrf()
-        name = request.form["name"]
+        name = request.form["name"].strip()
         if len(name) < 1 or len(name) > 30:
             return render_template("new.html",
                 message="Error: Name length must be between 1 and 30 characters.")
 
-        description = request.form["description"]
+        description = request.form["description"].strip()
         if len(description) > 1000:
             return render_template("new.html",
                 message="Error: Description length must be under 1000 characters.")
@@ -98,13 +98,34 @@ def new_ride():
 @app.route("/ride/<int:ride_id>")
 def show_ride(ride_id):
     data = rides.fetch_ride_data(ride_id)
+    reviews = rides.fetch_ride_reviews(ride_id)
 
     return render_template("ride.html", id=ride_id, name=data[0], description=data[1],\
-                            location=data[2], material=data[3], drop=data[4])
+                            location=data[2], material=data[3], drop=data[4], reviews=reviews)
 
 @app.route("/result", methods=["GET"])
 def result():
-    query = request.args["query"]
+    query = request.args["query"].strip()
     results = rides.search(query)
 
     return render_template("result.html", rides=results)
+
+@app.route("/review", methods=["POST"])
+def review():
+    users.require_role(1)
+    users.check_csrf()
+
+    ride_id = request.form["ride_id"]
+    stars = int(request.form["stars"])
+    content = request.form["content"].strip()
+    if stars < 1 or stars > 5:
+            return render_template("/ride/"+str(ride_id), 
+        message="Error: Choose a rating between 1 and 5 stars.")
+
+    if len(content) > 500:
+        return render_template("/ride/"+str(ride_id), 
+            message="Error: Review length must be under 500 characters.")
+
+    rides.new_review(content, stars, users.user_id(), ride_id)
+
+    return redirect("/ride/"+str(ride_id))

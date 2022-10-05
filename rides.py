@@ -26,7 +26,7 @@ def fetch_ride_data(ride_id):
     return db.session.execute(sql, {"ride_id": ride_id}).fetchone()
 
 def fetch_all_rides():
-    sql = "SELECT id, name FROM rides ORDER BY name"
+    sql = "SELECT * FROM rides ORDER BY name"
     return db.session.execute(sql).fetchall()
 
 def search(query):
@@ -42,3 +42,16 @@ def search(query):
              OR d.category ILIKE :query
              ORDER BY r.name"""
     return db.session.execute(sql, {"query":"%"+query+"%"}).fetchall()
+
+def new_review(content, stars, user_id, ride_id):
+    sql = """INSERT INTO reviews (content, stars, user_id, ride_id, sent_at)
+             VALUES (:content, :stars, :user_id, :ride_id, NOW())"""
+    db.session.execute(sql, {"content": content, "stars": stars, "user_id": user_id, "ride_id": ride_id})
+    db.session.commit()
+
+def fetch_ride_reviews(ride_id):
+    sql = """SELECT u.name, x.stars, x.content, x.sent_at
+             FROM users u, reviews x
+             WHERE x.user_id=u.id AND x.ride_id=:ride_id
+             ORDER BY x.sent_at DESC"""
+    return db.session.execute(sql, {"ride_id": ride_id}).fetchall()
