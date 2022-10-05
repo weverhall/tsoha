@@ -28,3 +28,12 @@ CREATE TABLE rides (
     material_id INTEGER REFERENCES material_categories,
     drop_id INTEGER REFERENCES drop_categories
 );
+
+CREATE TABLE reviews (
+    id SERIAL PRIMARY KEY,
+    content TEXT,
+    stars INTEGER,
+    sent_at TIMESTAMP,
+    user_id INTEGER REFERENCES users,
+    ride_id INTEGER REFERENCES rides ON DELETE CASCADE
+);

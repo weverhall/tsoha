@@ -56,7 +56,7 @@ def register():
 @app.route("/all", methods=["GET", "POST"])
 def show_all():
     if request.method == "GET":
-        all = rides.fetch_rides()
+        all = rides.fetch_all_rides()
         return render_template("all.html", rides=all)
 
     if request.method == "POST":

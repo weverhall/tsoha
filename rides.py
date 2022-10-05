@@ -25,7 +25,7 @@ def fetch_ride_data(ride_id):
              ORDER BY r.name"""
     return db.session.execute(sql, {"ride_id": ride_id}).fetchone()
 
-def fetch_rides():
+def fetch_all_rides():
     sql = "SELECT id, name FROM rides ORDER BY name"
     return db.session.execute(sql).fetchall()
 
