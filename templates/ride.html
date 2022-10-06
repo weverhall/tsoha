@@ -14,9 +14,15 @@
       {% endif %} {% endif %}
       <h1>{{name}}</h1>
       <h6>{{description}}</h6>
-      <i><font size="-1">Average rating: {{ average[0] }}</font></a></i>
+      <i><font size="-1">Average rating: {{ average[0] }}</font></a>
       <br>
-      <i><font size="-1">Categories: {{ location }}, {{ material }}, {{ drop }}</font></a></i>
+        <font size="-1">Categories:</font></a>
+      <a href="/result?query={{ location }}">
+        <font size="-1">{{ location }},</font></a>
+      <a href="/result?query={{ material }}">
+        <font size="-1">{{ material }},</font></a>
+      <a href="/result?query={{ drop }}">
+        <font size="-1">{{ drop }}</font></a></i>
       <p><br>
       <p><br>
       {% if session.user_id %}
