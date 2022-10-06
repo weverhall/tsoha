@@ -9,23 +9,23 @@ https://tsoha-vuoristoradat.herokuapp.com/
 
 **Kaavailtuja perustoimintoja:**
 
-* Käyttäjä voi kirjautua sisään ja ulos sekä luoda uuden tunnuksen.
+- :heavy_check_mark: Käyttäjä voi kirjautua sisään ja ulos sekä luoda uuden tunnuksen.
 
-* Käyttäjä voi antaa arvion vuoristoradasta ja lukea muiden antamia arvioita.
+- :heavy_check_mark: Käyttäjä voi antaa arvion vuoristoradasta ja lukea muiden antamia arvioita.
 
-* Käyttäjä voi etsiä vuoristoratoja kategorioittain (sijainti, tyyppi, huippunopeus ym.).
+- :heavy_check_mark: Käyttäjä voi etsiä vuoristoratoja kategorioittain (sijainti, tyyppi, huippunopeus ym.).
 
-* Ylläpitäjä voi lisätä ja poistaa vuoristoratoja.
+- :heavy_check_mark: Ylläpitäjä voi lisätä ja poistaa vuoristoratoja.
 
-* Ylläpitäjä voi poistaa arvioita.
+- Ylläpitäjä voi poistaa arvioita.
 
 
 **Mahdollisia lisätoimintoja:**
 
-* Käyttäjä voi hakea vuoristoratoja, joiden kuvauksissa on annettu sana.
+- :heavy_check_mark: Käyttäjä voi hakea vuoristoratoja, joiden kuvauksissa on annettu sana.
 
-* Käyttäjällä on profiili, josta näkyy perustiedot, annetut arviot ja suosikkivuoristoradat.
+- Käyttäjällä on profiili, josta näkyy perustiedot, annetut arviot ja suosikkivuoristoradat.
 
-* Käyttäjälle tarjotaan erinäistä tilastotietoa.
+- Käyttäjälle tarjotaan erinäistä tilastotietoa.
 
-* Käyttäjä voi katsoa vuoristoratojen top-listan arvostelujen perusteella.
+- Käyttäjä voi katsoa vuoristoratojen top-listan arvostelujen perusteella.

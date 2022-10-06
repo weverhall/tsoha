@@ -35,22 +35,22 @@ def register():
         username = request.form["username"]
         if len(username) < 3 or len(username) > 30:
             return render_template("register.html",
-                message="Error: Username length must be between 3 and 30 characters.")
+                    message="Error: Username length must be between 3 and 30 characters.")
 
         password1 = request.form["password1"]
         password2 = request.form["password2"]
         if len(password1) < 3 or len(password1) > 30:
             return render_template("register.html",
-                message="Error: Password length must be between 3 and 30 characters.")
+                    message="Error: Password length must be between 3 and 30 characters.")
         if password1 != password2:
-            return render_template("register.html", message="Error: Passwords do not match.")
+            return render_template("register.html", 
+                    message="Error: Passwords do not match.")
 
         role = request.form["role"]
         if role not in ("1", "2"):
             return render_template("register.html", message="Error: Unknown role.")
         if not users.register(username, password1, role):
-            return render_template("register.html",
-                message="Error: Username already exists.")
+            return render_template("register.html", message="Error: Username already exists.")
         return redirect("/")
 
 @app.route("/all", methods=["GET", "POST"])
@@ -80,12 +80,12 @@ def new_ride():
         name = request.form["name"].strip()
         if len(name) < 1 or len(name) > 30:
             return render_template("new.html",
-                message="Error: Name length must be between 1 and 30 characters.")
+                    message="Error: Name length must be between 1 and 30 characters.")
 
         description = request.form["description"].strip()
         if len(description) > 1000:
             return render_template("new.html",
-                message="Error: Description length must be under 1000 characters.")
+                    message="Error: Description length must be under 1000 characters.")
 
         location_id = request.form["location_id"]
         material_id = request.form["material_id"]
@@ -101,14 +101,14 @@ def show_ride(ride_id):
     reviews = rides.fetch_ride_reviews(ride_id)
 
     return render_template("ride.html", id=ride_id, name=data[0], description=data[1],\
-                            location=data[2], material=data[3], drop=data[4], reviews=reviews)
+            location=data[2], material=data[3], drop=data[4], reviews=reviews)
 
 @app.route("/result", methods=["GET"])
 def result():
     query = request.args["query"].strip()
     results = rides.search(query)
 
-    return render_template("result.html", rides=results)
+    return render_template("result.html", results=results, query=query)
 
 @app.route("/review", methods=["POST"])
 def review():
@@ -118,13 +118,16 @@ def review():
     ride_id = request.form["ride_id"]
     stars = int(request.form["stars"])
     content = request.form["content"].strip()
+
     if stars < 1 or stars > 5:
-            return render_template("/ride/"+str(ride_id), 
-        message="Error: Choose a rating between 1 and 5 stars.")
+        return render_template("index.html", 
+                message="Error: Choose a rating between 1 and 5 stars.")
 
     if len(content) > 500:
-        return render_template("/ride/"+str(ride_id), 
-            message="Error: Review length must be under 500 characters.")
+        return render_template("index.html",
+                message="Error: Review length must be under 500 characters.")
+    if content == "":
+        content = "I'm only leaving a rating."
 
     rides.new_review(content, stars, users.user_id(), ride_id)
 

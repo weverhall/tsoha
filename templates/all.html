@@ -8,13 +8,14 @@
       <div class="alert alert-info alert-dismissible fade show col-6" role="alert">
         Sign in as admin to remove rides.
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
+          <span aria-hidden="true">&times;</span>
         </button>
       </div>
       {% endif %}
       <form action="/all" method="post">
         {% for ride in rides %}
-        <a href="/ride/{{ ride.id }}"> <font size="+1">{{ ride.name }}</font></a>
+        <a href="/ride/{{ ride.id }}">
+          <font size="+2">{{ ride.name }}</font></a>
         {% if session.user_role == 2 %}
         <input type="radio" name="ride" value="{{ ride.id }}">
         {% endif %}
@@ -22,9 +23,9 @@
         {% endfor %}
         {% if session.user_role == 2 %}
         <p><br>
-        <button type="submit" class="btn btn-outline-danger">Remove</button>
-        <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
-        {% endif %}
+          <button type="submit" class="btn btn-outline-danger">Remove</button>
+          <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
+          {% endif %}
       </form>
     </div>
   </div>
