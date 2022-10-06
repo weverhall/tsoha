@@ -55,3 +55,7 @@ def fetch_ride_reviews(ride_id):
              WHERE x.user_id=u.id AND x.ride_id=:ride_id
              ORDER BY x.sent_at DESC"""
     return db.session.execute(sql, {"ride_id": ride_id}).fetchall()
+
+def fetch_average_rating(ride_id):
+    sql = """SELECT ROUND(AVG(stars), 1) FROM reviews WHERE ride_id=:ride_id"""
+    return db.session.execute(sql, {"ride_id": ride_id}).fetchone()

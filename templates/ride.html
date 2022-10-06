@@ -13,15 +13,16 @@
       </div>
       {% endif %} {% endif %}
       <h1>{{name}}</h1>
-      <h5>{{description}}</h5>
-      <p><br>
-      <i>Categories: {{location}} | {{material}} | {{drop}}</i>
+      <h6>{{description}}</h6>
+      <i><font size="-1">Average rating: {{ average[0] }}</font></a></i>
+      <br>
+      <i><font size="-1">Categories: {{ location }}, {{ material }}, {{ drop }}</font></a></i>
       <p><br>
       <p><br>
       {% if session.user_id %}
       <h4>Reviews</h4>
       {% for review in reviews %}
-      {{ review[0] }}'s review: "{{ review[2] }}"
+      {{ review[0] }}: "{{ review[2] }}"
       <br>
       Rating: {{ review[1] }}/5
       <br>

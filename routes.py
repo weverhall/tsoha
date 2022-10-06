@@ -56,7 +56,7 @@ def register():
 @app.route("/all", methods=["GET", "POST"])
 def show_all():
     if request.method == "GET":
-        all = rides.fetch_all_rides()
+        all = rides.fetch_all_rides()      
         return render_template("all.html", rides=all)
 
     if request.method == "POST":
@@ -99,9 +99,10 @@ def new_ride():
 def show_ride(ride_id):
     data = rides.fetch_ride_data(ride_id)
     reviews = rides.fetch_ride_reviews(ride_id)
+    average = rides.fetch_average_rating(ride_id)
 
     return render_template("ride.html", id=ride_id, name=data[0], description=data[1],\
-            location=data[2], material=data[3], drop=data[4], reviews=reviews)
+            location=data[2], material=data[3], drop=data[4], reviews=reviews, average=average)
 
 @app.route("/result", methods=["GET"])
 def result():
@@ -115,19 +116,19 @@ def review():
     users.require_role(1)
     users.check_csrf()
 
-    ride_id = request.form["ride_id"]
     stars = int(request.form["stars"])
-    content = request.form["content"].strip()
-
     if stars < 1 or stars > 5:
         return render_template("index.html", 
                 message="Error: Choose a rating between 1 and 5 stars.")
 
+    content = request.form["content"].strip()
     if len(content) > 500:
         return render_template("index.html",
                 message="Error: Review length must be under 500 characters.")
     if content == "":
         content = "I'm only leaving a rating."
+    
+    ride_id = request.form["ride_id"]
 
     rides.new_review(content, stars, users.user_id(), ride_id)
 
