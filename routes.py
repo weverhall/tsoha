@@ -133,3 +133,8 @@ def review():
     rides.new_review(content, stars, users.user_id(), ride_id)
 
     return redirect("/ride/"+str(ride_id))
+
+@app.route("/top", methods=["GET"])
+def show_top():
+    top = rides.fetch_top_averages()      
+    return render_template("top.html", top=top)

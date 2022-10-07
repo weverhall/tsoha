@@ -59,3 +59,12 @@ def fetch_ride_reviews(ride_id):
 def fetch_average_rating(ride_id):
     sql = """SELECT ROUND(AVG(stars), 1) FROM reviews WHERE ride_id=:ride_id"""
     return db.session.execute(sql, {"ride_id": ride_id}).fetchone()
+
+def fetch_top_averages():
+    sql = """SELECT r.id, r.name, ROUND(AVG(x.stars), 1) 
+             FROM reviews x 
+             JOIN rides r ON r.id=x.ride_id 
+             GROUP BY r.id, r.name 
+             ORDER BY AVG(x.stars) DESC 
+             LIMIT 3"""
+    return db.session.execute(sql).fetchall()
