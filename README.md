@@ -2,7 +2,7 @@
 
 https://tsoha-vuoristoradat.herokuapp.com/
 
-**25.9.2022:** Rekisteröityä voi joko käyttäjäksi tai ylläpitäjäksi. Ylläpitäjä voi kirjautuneena lisätä uuden tietueen yläpalkin kohdasta "Admin tools". Ulkoasu, virheviestit ja sivurakenne kokonaisuudessaan toimii suunnilleen jo halutulla tavalla. Arviot, kategoriat, tiedon poisto ym. toiminnot tulossa seuraavaan välipalautukseen.
+**7.10.2022:** Alta löytyy sovelluksen vaatimusmäärittely, jossa näkyy jo toteutetut toiminnot sekä arvioiden poisto keskeisenä puuttuvana toimintona.
 
 
 ## Vaatimusmäärittely
@@ -11,21 +11,19 @@ https://tsoha-vuoristoradat.herokuapp.com/
 
 - :heavy_check_mark: Käyttäjä voi kirjautua sisään ja ulos sekä luoda uuden tunnuksen.
 
-- :heavy_check_mark: Käyttäjä voi antaa arvion vuoristoradasta ja lukea muiden antamia arvioita.
+- :heavy_check_mark: Käyttäjä näkee vuoristoradan nimen ja kuvauksen lisäksi kategoriat, joihin se kuuluu ja vuoristodaralle annettujen arvioiden keskiarvon.
 
-- :heavy_check_mark: Käyttäjä voi etsiä vuoristoratoja kategorioittain (sijainti, tyyppi, huippunopeus ym.).
+- :heavy_check_mark: Käyttäjä voi etsiä vuoristoratoja hakutoiminnolla nimistä, kuvauksista ja kategorioista. Hakutermillä etsimisen lisäksi käyttäjä voi valita vuoristoradan listauksesta, jossa näkyy kaikki vuoristoradat.
 
-- :heavy_check_mark: Ylläpitäjä voi lisätä ja poistaa vuoristoratoja.
+- :heavy_check_mark: Kirjautunut käyttäjä voi antaa arvion vuoristoradasta ja lukea muiden antamia arvioita.
 
-- Ylläpitäjä voi poistaa arvioita.
+- :heavy_check_mark: Kirjautunut ylläpitäjä voi lisätä ja poistaa vuoristoratoja.
+
+- Kirjautunut ylläpitäjä voi poistaa arvioita.
 
 
 **Mahdollisia lisätoimintoja:**
 
-- :heavy_check_mark: Käyttäjä voi hakea vuoristoratoja, joiden kuvauksissa on annettu sana.
-
-- Käyttäjällä on profiili, josta näkyy perustiedot, annetut arviot ja suosikkivuoristoradat.
+- :heavy_check_mark: Käyttäjä voi katsoa arvostelujen perusteella muodostetun vuoristoratojen top-listan.
 
 - Käyttäjälle tarjotaan erinäistä tilastotietoa.
-
-- Käyttäjä voi katsoa vuoristoratojen top-listan arvostelujen perusteella.
