@@ -2,7 +2,7 @@
 
 https://tsoha-vuoristoradat.herokuapp.com/
 
-**7.10.2022:** Alta löytyy sovelluksen vaatimusmäärittely, jossa näkyy jo toteutetut toiminnot sekä arvioiden poisto keskeisenä puuttuvana toimintona.
+**8.10.2022:** Alta löytyy sovelluksen vaatimusmäärittely, jossa näkyy jo toteutetut toiminnot (ja arvioiden poisto keskeisenä puuttuvana toimintona).
 
 
 ## Vaatimusmäärittely
@@ -26,4 +26,4 @@ https://tsoha-vuoristoradat.herokuapp.com/
 
 - :heavy_check_mark: Käyttäjä voi katsoa arvostelujen perusteella muodostetun vuoristoratojen top-listan.
 
-- Käyttäjälle tarjotaan erinäistä tilastotietoa.
+- Käyttäjälle tarjotaan tilastotietoa joko käyttäjäkohtaisesti tai koko sivun osalta.

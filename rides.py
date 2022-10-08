@@ -45,7 +45,7 @@ def search(query):
 
 def new_review(content, stars, user_id, ride_id):
     sql = """INSERT INTO reviews (content, stars, user_id, ride_id, sent_at)
-             VALUES (:content, :stars, :user_id, :ride_id, NOW())"""
+             VALUES (:content, :stars, :user_id, :ride_id, NOW()::timestamp(0))"""
     db.session.execute(sql, {"content": content, "stars": stars, "user_id": user_id, "ride_id": ride_id})
     db.session.commit()
 
