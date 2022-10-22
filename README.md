@@ -1,8 +1,10 @@
-# Vuoristoratasovellus
+# RidesApp
+
+Sovelluksessa voi selata, hakea ja arvioida vuoristoratoja.
 
 https://tsoha-vuoristoradat.herokuapp.com/
 
-**8.10.2022:** Alta löytyy sovelluksen vaatimusmäärittely, jossa näkyy jo toteutetut toiminnot (ja arvioiden poisto keskeisenä puuttuvana toimintona).
+**22.10.2022:** Toteutettu vielä arvioiden poisto ja viimeistelty sovellus loppupalautukseen.
 
 ## Vaatimusmäärittely
 
@@ -18,7 +20,7 @@ https://tsoha-vuoristoradat.herokuapp.com/
 
 - :heavy_check_mark: Kirjautunut ylläpitäjä (admin) voi lisätä ja poistaa vuoristoratoja.
 
-- Kirjautunut ylläpitäjä (admin) voi poistaa arvioita.
+- :heavy_check_mark: Kirjautunut ylläpitäjä (admin) voi poistaa arvioita.
 
 
 **Mahdollisia lisätoimintoja:**
@@ -26,5 +28,3 @@ https://tsoha-vuoristoradat.herokuapp.com/
 - :heavy_check_mark: Käyttäjä voi katsoa arvostelujen perusteella muodostetun vuoristoratojen top-listan.
 
 - :heavy_check_mark: Sivu antaa käyttäjäroolista riippuvaisia ohjeita.
-
-- Käyttäjälle tarjotaan tilastotietoa joko käyttäjäkohtaisesti tai koko sivun osalta.
