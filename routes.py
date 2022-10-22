@@ -138,3 +138,19 @@ def review():
 def show_top():
     top = rides.fetch_top_averages()      
     return render_template("top.html", top=top)
+
+@app.route("/reviews", methods=["GET", "POST"])
+def show_reviews():
+    if request.method == "GET":
+        reviews = rides.fetch_all_reviews()      
+        return render_template("reviews.html", reviews=reviews)
+
+    if request.method == "POST":
+        users.require_role(2)
+        users.check_csrf()
+
+        if "review" in request.form:
+            review = request.form["review"]
+            rides.remove_review(review)
+
+        return redirect("/reviews")

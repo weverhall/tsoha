@@ -49,6 +49,11 @@ def new_review(content, stars, user_id, ride_id):
     db.session.execute(sql, {"content": content, "stars": stars, "user_id": user_id, "ride_id": ride_id})
     db.session.commit()
 
+def remove_review(review_id):
+    sql = "DELETE FROM reviews WHERE reviews.id=:review_id"
+    db.session.execute(sql, {"review_id":review_id})
+    db.session.commit()
+
 def fetch_ride_reviews(ride_id):
     sql = """SELECT u.name, x.stars, x.content, x.sent_at
              FROM users u, reviews x
@@ -56,8 +61,16 @@ def fetch_ride_reviews(ride_id):
              ORDER BY x.sent_at DESC"""
     return db.session.execute(sql, {"ride_id": ride_id}).fetchall()
 
+def fetch_all_reviews():
+    sql = """SELECT r.name, u.name, x.stars, x.content, x.sent_at, x.id
+             FROM reviews x
+             JOIN rides r ON r.id=x.ride_id
+             JOIN users u ON u.id=x.user_id
+             ORDER BY r.name, x.sent_at DESC"""
+    return db.session.execute(sql).fetchall()
+
 def fetch_average_rating(ride_id):
-    sql = """SELECT ROUND(AVG(stars), 1) FROM reviews WHERE ride_id=:ride_id"""
+    sql = "SELECT ROUND(AVG(stars), 1) FROM reviews WHERE ride_id=:ride_id"
     return db.session.execute(sql, {"ride_id": ride_id}).fetchone()
 
 def fetch_top_averages():

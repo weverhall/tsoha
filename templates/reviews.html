@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-8">
+      {% if session.user_role != 2 %}
+      <div class="alert alert-info alert-dismissible fade show col-6" role="alert">
+        Sign in as admin to remove reviews.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      {% endif %}
+
+      {% if session.user_role == 2 %}
+      <div class="alert alert-info alert-dismissible fade show col-8" role="alert">
+        Reviews are listed alphabetically by ride name and by send time within the rides.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <form action="/reviews" method="post">
+        <br>
+        {% for review in reviews %}
+        Review given for <b>{{ review[0] }}</b>:
+        <br>
+        {{ review[1] }}: "{{ review[3] }}"
+        <br>
+        Rating: {{ review[2] }}/5
+        <br>
+        <i><font size="-1">Sent at {{ review[4] }}</font></a></i>
+        <br>
+        <input type="radio" name="review" value="{{ review.id }}">
+        <br><p></p>
+        {% endfor %}
+        <br>
+          <button type="submit" class="btn btn-outline-danger">Remove</button>
+          <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
+      </form>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% endblock %}
