@@ -62,7 +62,7 @@ def fetch_ride_reviews(ride_id):
     return db.session.execute(sql, {"ride_id": ride_id}).fetchall()
 
 def fetch_all_reviews():
-    sql = """SELECT r.name, u.name, x.stars, x.content, x.sent_at, x.id
+    sql = """SELECT r.name, u.name, x.stars, x.content, x.sent_at, x.id, x.ride_id
              FROM reviews x
              JOIN rides r ON r.id=x.ride_id
              JOIN users u ON u.id=x.user_id

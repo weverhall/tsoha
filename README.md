@@ -1,6 +1,6 @@
 # RidesApp
 
-Sovelluksessa voi selata, hakea ja arvioida vuoristoratoja.
+Sovelluksessa voi selata, hakea ja arvioida vuoristoratoja. Ylläpitäjänä voi hallinnoida vuoristoratoja sekä poistaa arvioita.
 
 https://tsoha-vuoristoradat.herokuapp.com/
 
@@ -21,7 +21,6 @@ https://tsoha-vuoristoradat.herokuapp.com/
 - :heavy_check_mark: Kirjautunut ylläpitäjä (admin) voi lisätä ja poistaa vuoristoratoja.
 
 - :heavy_check_mark: Kirjautunut ylläpitäjä (admin) voi poistaa arvioita.
-
 
 **Mahdollisia lisätoimintoja:**
 
