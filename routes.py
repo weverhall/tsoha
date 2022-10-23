@@ -91,6 +91,10 @@ def new_ride():
         material_id = request.form["material_id"]
         drop_id = request.form["drop_id"]
 
+        if rides.check_ride_name(name) is not None or rides.check_ride_name(name.lower()) is not None\
+            or rides.check_ride_name(name.upper()) is not None or rides.check_ride_name(name.title()) is not None:
+                return render_template("new.html", message="Error: Ride with that name already exists.")
+
         ride_id = rides.new_ride(name, description, location_id, material_id, drop_id)
 
         return redirect("/ride/"+str(ride_id))

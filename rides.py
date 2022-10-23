@@ -29,6 +29,10 @@ def fetch_all_rides():
     sql = "SELECT * FROM rides ORDER BY name"
     return db.session.execute(sql).fetchall()
 
+def check_ride_name(name):
+    sql = "SELECT name FROM rides WHERE name=:name"
+    return db.session.execute(sql, {"name":name}).fetchone()
+
 def search(query):
     sql = """SELECT r.id, r.name, r.description, l.category, m.category, d.category
              FROM rides r
